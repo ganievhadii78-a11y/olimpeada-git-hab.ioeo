@@ -1,0 +1,174 @@
+/* Общие настройки */
+*  {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family:  'Arial', sans-serif;
+    background-color: #51E0FC;
+    color: #ffffff;
+}
+
+/* Шапка */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 60px;
+    background: rgba(0, 0, 0, 0.2); 
+
+}
+
+.logo  {
+    font-size: 1.2rem;
+    font-weight: 800;
+    letter-spacing: 4px;
+    text-transform:  uppercase;
+
+}
+
+nav a {
+    text-decoration: none;
+    color: #ffffff;
+    margin-left: 25px;
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.4s;
+
+}
+
+nav a:hover {
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 8px;
+    color: #51E0FC;
+    background: #ffffff;
+    transition: 0,5s;
+}
+
+/* слайдер ширина*/
+.hero-section {
+    width: 100%;
+    height: 500px; 
+    margin-top: 0;
+
+}
+
+.swiper {
+    width: 100%; 
+    height: 100%;
+
+}
+
+.swiper-slide {
+    position: relative;
+
+}
+
+.swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Текст поверх слайдов */
+
+.slide-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.slide-overlay h2 {
+    font-size: 3rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+
+}
+
+
+.swiper-button-next, .swiper-button-prev {
+    color: #ffffff !important;
+}
+
+.swiper-pagination-bullet-active {
+    background: #ffffff !important;
+}
+
+
+
+.rules-section {
+    padding: 100px 0;
+    background-color: #51E0FC;
+    text-align: center;
+}
+
+.container {
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+
+.rules-title {
+    font-size: 4rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    margin-bottom: 80px;
+    color: #ffffff;
+
+}
+
+.rules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 40px;
+}
+
+/*карточки */
+.rule-card {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 60px 40px;
+    border-radius: 30px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    color: #fff;
+}
+
+.rule-card:hover {
+    transform: translateY(-15px);
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.rule-card i {
+    font-size: 5rem;
+    margin-bottom: 25px;
+
+    display: block;
+}
+
+.rule-card h3 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-weight: 800;
+
+}
+
+.rule-card p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    
+
+}
