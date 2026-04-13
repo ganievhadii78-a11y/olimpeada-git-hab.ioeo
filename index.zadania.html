@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задачи — Alempiada Code</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="src/css/style.zadania.css">
+    <link rel="icon" href="src/asets/logo/лого.png">
+</head>
+<body>
+
+<header>
+    <div class="logo">Inform<span style="font-weight: 300; color: #64748b;">Olimpi</span></div>
+    <nav><a href="tablix-zadani.html" class="nav-link">🏆 Рейтинг</a></nav>
+</header>
+
+<div class="container">
+    <div class="welcome-text" id="welcome-header">
+        <h1>Выберите уровень сложности</h1>
+        <p>От основ синтаксиса до МЕГА-алгоритмов</p>
+    </div>
+
+    <div class="level-selector" id="levels">
+        <div class="level-card easy" onclick="showTask('easy')">
+            <i class='bx bx-code'></i>
+            <h3>Легкий</h3>
+            <p>Синтаксис</p>
+        </div>
+        <div class="level-card medium" onclick="showTask('medium')">
+            <i class='bx bx-layer'></i>
+            <h3>Средний</h3>
+            <p>Массивы</p>
+        </div>
+        <div class="level-card hard" onclick="showTask('hard')">
+            <i class='bx bxs-zap'></i> <h3>Сложный</h3>
+            <p>Логика</p>
+        </div>
+        <div class="level-card random" onclick="showTask('random')">
+            <i class='bx bx-shuffle'></i>
+            <h3>Рандом</h3>
+            <p>Случайная</p>
+        </div>
+        <div class="level-card personal" onclick="showTask('personal')">
+            <i class='bx bx-target-lock'></i>
+            <h3>Персональный</h3>
+            <p>Твой тест</p>
+        </div>
+        <div class="level-card mega" onclick="showTask('mega')">
+            <i class='bx bxs-skull'></i> <h3>МЕГА</h3>
+            <p>Эксперт</p>
+        </div>
+    </div>
+
+    <div class="task-view" id="taskView" style="display: none;">
+        <button onclick="location.reload()" class="back-link">← Назад к выбору</button>
+        <div class="task-header">
+            <h2 id="taskTitle"></h2>
+            <select class="lang-select">
+                <option>JavaScript</option>
+                <option>Python</option>
+                <option>C++</option>
+            </select>
+        </div>
+        <p id="taskDesc" class="task-description"></p>
+        <textarea class="code-area" id="userCode" placeholder="// Введите ваше решение..."></textarea>
+        <button class="btn-submit" onclick="submitCode()">Сдать решение</button>
+    </div>
+</div>
+
+<script>
+    const tasks = {
+        easy: { title: "Сумма чисел", desc: "Напишите функцию, возвращающую сумму A и B." },
+        medium: { title: "Реверс строки", desc: "Переверните строку без встроенных функций." },
+        hard: { title: "Валидация", desc: "Проверьте баланс скобок в строке." },
+        random: { title: "Рандом-задача", desc: "Найдите самое длинное слово в предложении." },
+        personal: { title: "Свой вызов", desc: "Отсортируйте массив по убыванию." },
+        mega: { title: "Алгоритм Дейкстры", desc: "Найдите кратчайший путь в графе." }
+    };
+
+    let currentLvl = '';
+    let start = 0;
+
+    function showTask(lvl) {
+        currentLvl = lvl;
+        start = Date.now();
+        document.getElementById('levels').style.display = 'none';
+        document.getElementById('welcome-header').style.display = 'none';
+        document.getElementById('taskView').style.display = 'block';
+        document.getElementById('taskTitle').innerText = tasks[lvl].title;
+        document.getElementById('taskDesc').innerText = tasks[lvl].desc;
+    }
+
+    function submitCode() {
+        if(document.getElementById('userCode').value.length < 5) return alert("Код слишком короткий!");
+        const name = prompt("Ник для таблицы:") || "Аноним";
+        const time = Math.floor((Date.now() - start) / 1000);
+        let leaders = JSON.parse(localStorage.getItem('codeLeaders')) || [];
+        leaders.push({ name, time, level: currentLvl });
+        localStorage.setItem('codeLeaders', JSON.stringify(leaders));
+        location.href = 'leaderboard.html';
+    }
+</script>
+</body>
+</html>

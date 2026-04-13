@@ -1,0 +1,202 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(#00D4FF,#51E0FC,#FFFFFF);
+}
+
+.container{
+    position: relative;
+    width: 860px;
+    height: 560px;
+    background: #FFFFFF;
+    border-radius: 40px;
+    box-shadow: 0 0 30px rgb(0,0,0, .2);
+    overflow: hidden;
+}
+
+.container p {
+    font-size: 16px;
+    margin: 16px 0;
+}
+
+
+.container h1 {
+    font-size: 35px;
+    margin: -10px 0;
+
+}
+
+.input__box{
+    position: relative;
+    margin: 30px 0;
+
+}
+
+.input__box input {
+    width: 100%;
+    padding: 12px 50px 12px 20px;
+    background: #e9e8e8;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    font-size: 17px;
+    color: #323232; 
+    font-weight: 500;
+}
+
+.input__box input::placeholder{
+    color: #323232;
+    font-weight: 400;
+
+
+}
+
+
+.input__box i{
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color:#323232;
+
+}
+
+.form__box{
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background: #ffffff;
+    right: 0;
+    display: flex;
+    align-items: center;
+    color: #323232;
+    text-align: center;
+    padding: 40px;
+    z-index: 1;
+}
+
+.form__box.reg{
+    visibility: hidden;
+}
+
+form{
+    width: 100%;
+
+}
+
+
+.forgot__link{
+    margin: -15px 0 15px;
+
+}
+
+
+.forgot__link a {
+    font-size: 15px;
+    color: rgb(32, 32, 32);
+    text-decoration: none;
+    
+}
+
+.btn{
+    width: 100%;
+    height: 50px;
+    background: #00BBE0;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    border: none;
+    cursor: pointer;
+    font-size: 17px;
+    color: #ffffff;
+    font-weight: 600;
+
+}
+
+
+.social__icon a {
+    display: inline-flex;
+    padding: 10px;
+    border: 2px solid #323232;
+    border-radius: 8px;
+    font-size: 25px ;
+    color: #323232;
+    text-decoration: none;
+    margin: 0 8px;
+}
+
+
+.toggle__box{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+}
+
+.toggle__panel{
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    z-index: 2;
+
+}
+
+.toggle__panel.toggle-right{
+    right: -50%;
+}
+
+.toggle__box::before{
+    position: absolute;
+    content:'' ;
+    left: -250%;
+    width: 300%;
+    height: 100%;
+    background:#51E0FC;
+    z-index: 2;
+    border-radius: 150px;
+    transform: 1.9s ease-in-out;
+
+}
+
+
+.container.activ .toggle__box::before{
+    left: 50%;
+
+}
+
+.toggle__panel p {
+    margin-bottom: 20px;
+    font-size: 24px;
+    text-align: center;
+
+}
+
+.toggle__panel .btn{
+    width: 160px;
+    height: 45px;
+    background: transparent;
+    border: 2px solid #ffffff;
+    box-shadow: none;
+
+
+}
+

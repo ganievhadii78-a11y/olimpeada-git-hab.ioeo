@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ТОП-30 Лидеров</title>
+    <link rel="stylesheet" href="src/css/style.tablixa.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="icon" href="src/asets/logo/лого.png">
+</head>
+<body class="leaderboard-page">
+
+    <h1 class="leaderboard-title">ТОП-30 УЧАСТНИКОВ</h1>
+
+    <div class="leaderboard-container">
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>Место</th>
+                    <th>Участник</th>
+                    <th><i class='bx bx-time'></i> Время</th>
+                </tr>
+            </thead>
+            <tbody id="leader-rows">
+                </tbody>
+        </table>
+        
+        <div id="no-data-msg" class="hidden">Пока результатов нет. Стань первым!</div>
+    </div>
+
+    <div class="actions">
+        <a href="index.html" class="btn-back">На главную</a>
+    </div>
+
+    <script>
+        function loadLeaders() {
+            const tableBody = document.getElementById('leader-rows');
+            const noData = document.getElementById('no-data-msg');
+            
+            // Получаем данные из хранилища браузера
+            let leaders = JSON.parse(localStorage.getItem('allLeaders')) || [];
+
+            if (leaders.length === 0) {
+                noData.classList.remove('hidden');
+                return;
+            }
+
+            // Сортировка по времени (от меньшего к большему)
+            leaders.sort((a, b) => a.time - b.time);
+
+            // Берем только первых 30
+            const top30 = leaders.slice(0, 30);
+
+            tableBody.innerHTML = ''; 
+
+            top30.forEach((player, index) => {
+                const mins = Math.floor(player.time / 60);
+                const secs = player.time % 60;
+                const formattedTime = `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+
+                const row = `
+                    <tr class="leader-row">
+                        <td class="rank">${index + 1}</td>
+                        <td class="name">${player.name}</td>
+                        <td class="time">${formattedTime}</td>
+                    </tr>
+                `;
+                tableBody.innerHTML += row;
+            });
+        }
+
+        loadLeaders();
+    </script>
+</body>
+</html>

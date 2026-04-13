@@ -1,0 +1,101 @@
+/* Основной фон страницы лидеров */
+.leaderboard-page {
+    background-color: #51E0FC;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 20px;
+    margin: 0;
+}
+
+/* Заголовок */
+.leaderboard-title {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 40px;
+    text-shadow: 2px 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Контейнер таблицы с эффектом стекла */
+.leaderboard-container {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(15px);
+    border-radius: 40px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    padding: 40px;
+    width: 100%;
+    max-width: 850px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.1);
+}
+
+/* Сама таблица */
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #fff;
+}
+
+.styled-table thead tr {
+    border-bottom: 3px solid rgba(255, 255, 255, 0.6);
+}
+
+.styled-table th {
+    padding: 15px 20px;
+    text-align: left;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.styled-table td {
+    padding: 20px;
+    font-size: 1.3rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Эффекты для строк */
+.leader-row:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.01);
+    transition: 0.2s ease-in-out;
+}
+
+/* Стили для Мест (1, 2, 3) */
+.rank {
+    font-weight: 900;
+    width: 80px;
+}
+
+.leader-row:nth-child(1) .rank { color: #FFD700; font-size: 1.8rem; } /* Золото */
+.leader-row:nth-child(2) .rank { color: #E5E4E2; font-size: 1.6rem; } /* Платина */
+.leader-row:nth-child(3) .rank { color: #CD7F32; font-size: 1.5rem; } /* Бронза */
+
+/* Кнопка назад */
+.actions {
+    margin-top: 40px;
+}
+
+.btn-back {
+    display: inline-block;
+    padding: 18px 45px;
+    background: #000;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.3s;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.btn-back:hover {
+    background: #222;
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+
+.hidden { display: none; }

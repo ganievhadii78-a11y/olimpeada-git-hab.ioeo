@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лидеры — Alempiada</title>
+    <link rel="stylesheet" href="src/css/style.tablix-zadani.css">
+</head>
+<body>
+
+    <div class="board">
+        <div class="header-section">
+            <h1>Зал славы</h1>
+            <p>Лучшие программисты олимпиады</p>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Место</th>
+                        <th>Участник</th>
+                        <th>Уровень</th>
+                        <th>Время</th>
+                    </tr>
+                </thead>
+                <tbody id="l-rows"></tbody>
+            </table>
+        </div>
+
+        <div class="footer-actions">
+            <a href="tasks.html" class="btn-main">Новое задание</a>
+            <button onclick="clearStats()" class="btn-secondary">Сброс данных</button>
+        </div>
+    </div>
+
+    <script>
+        const leaders = JSON.parse(localStorage.getItem('codeLeaders')) || [];
+        const weights = { mega: 6, personal: 5, random: 4, hard: 3, medium: 2, easy: 1 };
+        
+        leaders.sort((a, b) => (weights[b.level] - weights[a.level]) || (a.time - b.time));
+
+        const body = document.getElementById('l-rows');
+        leaders.slice(0, 30).forEach((p, i) => {
+            const levelNames = { easy:'Легкий', medium:'Средний', hard:'Сложный', random:'Рандом', personal:'Личный', mega:'МЕГА' };
+            body.innerHTML += `
+                <tr>
+                    <td class="rank-cell">${i + 1}</td>
+                    <td class="name-cell">${p.name}</td>
+                    <td><span class="badge ${p.level}">${levelNames[p.level]}</span></td>
+                    <td class="time-cell">${p.time} сек.</td>
+                </tr>
+            `;
+        });
+
+        function clearStats() {
+            if(confirm("Очистить таблицу?")) { localStorage.removeItem('codeLeaders'); location.reload(); }
+        }
+    </script>
+</body>
+</html>
